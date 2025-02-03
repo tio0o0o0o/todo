@@ -1,6 +1,6 @@
-import Utility from "./utility.js";
+const Utility = require("./utility.js");
 
-export default class Note {
+class Note {
     constructor(title, description) {
         this.title = title;
         this.description = description;
@@ -8,3 +8,4 @@ export default class Note {
     }
 }
 
+exports.Note = Note;

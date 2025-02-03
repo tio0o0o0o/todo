@@ -1,7 +1,6 @@
-import Task from "./task.js";
-import { ChecklistTask, ChecklistItem } from "./checklistTask.js";
+const Task = require("./task.js")
 
-export default class Tasks {
+class Tasks {
     static taskList = [];
 
     static createTask(title, description, dueDate, priority) {
@@ -33,3 +32,5 @@ export default class Tasks {
         return false;
     }
 }
+
+exports.Tasks = Tasks;

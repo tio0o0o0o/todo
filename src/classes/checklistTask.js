@@ -1,6 +1,6 @@
-import Utility from "./utility.js";
+const Utility = require("./utility.js");
 
-export class ChecklistTask {
+class ChecklistTask {
     constructor(title, items, dueDate, priority) {
         this.title = title;
         this.items = items;
@@ -11,9 +11,12 @@ export class ChecklistTask {
     }
 }
 
-export class ChecklistItem {
+class ChecklistItem {
     constructor(title) {
         this.title = title;
         this.complete = false;
     }
 }
+
+exports.ChecklistTask = ChecklistTask;
+exports.ChecklistItem = ChecklistItem;

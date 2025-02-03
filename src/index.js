@@ -1,2 +1,1 @@
-import Tasks from "./classes/tasks";
-
+const Tasks = require("./classes/tasks");

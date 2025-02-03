@@ -1,6 +1,6 @@
-import Utility from "./utility.js";
+const Utility = require("./utility.js");
 
-export default class Task {
+class Task {
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;
@@ -11,3 +11,4 @@ export default class Task {
     }
 }
 
+exports.Task = Task;

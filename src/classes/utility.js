@@ -1,4 +1,4 @@
-export default class Utility {
+class Utility {
     static generateId(length = 20) {
         let id = "";
 
@@ -22,4 +22,4 @@ export default class Utility {
     }
 }
 
-
+exports.Utility = Utility;
