@@ -1,4 +1,5 @@
 const Task = require("./task.js")
+const { ChecklistTask, ChecklistItem } = require("./checklistTask.js");
 
 class Tasks {
     static taskList = [];
@@ -33,4 +34,4 @@ class Tasks {
     }
 }
 
-exports.Tasks = Tasks;
+module.exports = Tasks;

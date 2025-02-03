@@ -18,5 +18,5 @@ class ChecklistItem {
     }
 }
 
-exports.ChecklistTask = ChecklistTask;
-exports.ChecklistItem = ChecklistItem;
+module.exports = ChecklistTask;
+module.exports = ChecklistItem;

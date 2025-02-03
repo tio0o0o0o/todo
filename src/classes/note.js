@@ -8,4 +8,4 @@ class Note {
     }
 }
 
-exports.Note = Note;
+module.exports = Note;

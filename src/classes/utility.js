@@ -22,4 +22,4 @@ class Utility {
     }
 }
 
-exports.Utility = Utility;
+module.exports = Utility;
