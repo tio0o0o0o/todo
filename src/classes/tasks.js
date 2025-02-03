@@ -32,6 +32,16 @@ class Tasks {
         }
         return false;
     }
+
+    static toggleCompletion(id) {
+        for (let i = 0; i < this.taskList.length; i++) {
+            if (this.taskList[i].id === id) {
+                this.taskList[i].complete = !this.taskList[i].complete;
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 Tasks.createTask("Gym", "Go to QT Gym", "Today", "Low");
