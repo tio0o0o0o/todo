@@ -15,6 +15,7 @@ class ChecklistItem {
     constructor(title) {
         this.title = title;
         this.complete = false;
+        this.id = Utility.generateId();
     }
 }
 
