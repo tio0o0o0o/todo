@@ -5,7 +5,7 @@ class Tasks {
     static taskList = [];
 
     static createTask(title, description, dueDate, priority) {
-        const newTask = new Task(title, description, dueDate, priority)
+        const newTask = new Task(title, description, dueDate, priority);
         this.taskList.push(newTask);
         return newTask;
     }
