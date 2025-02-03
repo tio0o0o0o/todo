@@ -2,15 +2,15 @@ import Task from "./task.js";
 import { ChecklistTask, ChecklistItem } from "./checklistTask.js";
 
 export default class Tasks {
-    taskList = [];
+    static taskList = [];
 
-    createTask(title, description, dueDate, priority) {
+    static createTask(title, description, dueDate, priority) {
         const newTask = new Task(title, description, dueDate, priority)
         this.taskList.push(newTask);
         return newTask;
     }
 
-    updateTask(id, title, description, dueDate, priority) {
+    static updateTask(id, title, description, dueDate, priority) {
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id === id) {
                 this.taskList[i].title = title;
@@ -23,7 +23,7 @@ export default class Tasks {
         return false;
     }
 
-    deleteTask(id) {
+    static deleteTask(id) {
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id === id) {
                 this.taskList.splice(i);
