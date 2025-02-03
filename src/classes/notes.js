@@ -30,3 +30,8 @@ class Notes {
         return false;
     }
 }
+
+Notes.createNote("Random thoughts", "I should buy some condoms...");
+Notes.createNote("Business ideas", "Only Fans");
+
+module.exports = Notes;

@@ -33,7 +33,7 @@ class Tasks {
         return false;
     }
 
-    static toggleCompletion(id) {
+    static toggleTaskCompletion(id) {
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id === id) {
                 this.taskList[i].complete = !this.taskList[i].complete;
@@ -41,6 +41,17 @@ class Tasks {
             }
         }
         return false;
+    }
+
+    static createChecklistTask(title, itemTitles, dueDate, priority) {
+        const items = [];
+        itemTitles.forEach((value) => {
+            items.push(new ChecklistItem(value));
+        });
+
+        const newChecklistTask = new ChecklistTask(title, items, dueDate, priority);
+        this.taskList.push(newChecklistTask);
+        return newChecklistTask;
     }
 }
 
