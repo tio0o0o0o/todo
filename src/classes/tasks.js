@@ -26,12 +26,15 @@ class Tasks {
     static deleteTask(id) {
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id === id) {
-                this.taskList.splice(i);
+                this.taskList.splice(i, 1);
                 return true;
             }
         }
         return false;
     }
 }
+
+Tasks.createTask("Gym", "Go to QT Gym", "Today", "Low");
+Tasks.createTask("Brush teeth", "", "Today", "Low");
 
 module.exports = Tasks;
