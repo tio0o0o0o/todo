@@ -6,6 +6,7 @@ class Notes {
     static createNote(title, description) {
         const newNote = new Note(title, description);
         this.noteList.push(newNote);
+        
         return newNote;
     }
 
@@ -14,6 +15,7 @@ class Notes {
             if (this.noteList[i].id === id) {
                 this.noteList[i].title = title;
                 this.noteList[i].description = description; 
+
                 return true;
             }
         }
@@ -24,6 +26,7 @@ class Notes {
         for (let i = 0; i < this.noteList.length; i++) {
             if (this.noteList[i].id === id) {
                 this.noteList.splice(i, 1);
+
                 return true;
             }
         }
