@@ -16,7 +16,7 @@ function build(parent = document.querySelector("main")) {
        width: "100%",
        height: "100%",
        gap: "20px",
-       padding: "20px 80px 80px 80px",
+       padding: "20px 80px 80px 60px",
     //    backgroundColor: "red"
     });
     Object.assign(column1.style, {
@@ -68,27 +68,6 @@ function build(parent = document.querySelector("main")) {
     });
 
     parent.appendChild(columnWrapper);
-
-    // notes.noteList.forEach((note) => {
-    //     const newNote = document.createElement("div");
-    //     const title = document.createElement("h1");
-    //     const description = document.createElement("p");
-        
-    //     title.textContent = note.title;
-    //     description.textContent = note.description;
-
-    //     Object.assign(newNote.style, {
-    //         backgroundColor: "rgb(50, 50, 50)",
-    //         padding: "20px",
-    //         borderRadius: "10px"
-    //     });
-
-    //     newNote.appendChild(title);
-    //     newNote.appendChild(description);
-    //     gridWrapper.appendChild(newNote);
-    // });
-
-    // parent.appendChild(gridWrapper);
 }
 
 build();
