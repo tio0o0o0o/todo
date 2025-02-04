@@ -3,20 +3,21 @@ const Task = require("./task.js")
 class Tasks {
     static taskList = [];
 
-    static create(title, description, dueDate, priority) {
-        const newTask = new Task(title, description, dueDate, priority);
+    static create(title, description, dueDate, priority, category) {
+        const newTask = new Task(title, description, dueDate, priority, category);
         this.taskList.push(newTask);
 
         return newTask;
     }
 
-    static update(id, title, description, dueDate, priority) {
+    static update(id, title, description, dueDate, priority, category) {
         for (let i = 0; i < this.taskList.length; i++) {
             if (this.taskList[i].id === id) {
                 this.taskList[i].title = title;
                 this.taskList[i].description = description; 
                 this.taskList[i].dueDate = dueDate; 
                 this.taskList[i].priority = priority; 
+                this.taskList[i].priority = category; 
 
                 return true;
             }
@@ -47,7 +48,7 @@ class Tasks {
     }
 }
 
-Tasks.create("Gym", "Go to QT Gym", "Today", "Low");
-Tasks.create("Brush teeth", "", "Today", "Low");
+Tasks.create("Gym", "Go to QT Gym", "Today", "Low", "Health");
+Tasks.create("Brush teeth", "", "Today", "Low", "Basic stuff");
 
 module.exports = Tasks;
