@@ -5,6 +5,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    line-height: 1.2;
 }
 /* CSS RESET END */
 
@@ -30,6 +31,7 @@ body {
     grid-template-rows: max-content 1fr;
     color: white;
     font-family: Arial, Helvetica, sans-serif, system-ui;
+    align-items: start;
 }
 
 header {
@@ -39,6 +41,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    position: sticky;
+    top: 0;
 
     & input[type="image"] {
         width: 30px;
@@ -85,6 +89,9 @@ nav {
     background-color: var(--black);
     font-size: 20px;
     padding: 20px;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
 
     & div {
         display: flex;
