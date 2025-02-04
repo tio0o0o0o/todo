@@ -29,3 +29,5 @@ class Categories {
         return false;
     }
 }
+
+module.exports = Categories;
