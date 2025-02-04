@@ -20,6 +20,29 @@ class Utility {
     static randomInt(max) {
         return Math.floor(Math.random() * max);
     }
+
+    static removeChildElements(parent) {
+        while(parent.hasChildNodes()) {
+            parent.removeChild(parent.lastChild);
+        }
+    }
+
+    static createElement(type = "div", parent, styles = {}, attributes = [], textContent = "", innerHTML = "") {
+        const newElement = document.createElement(type);
+        Object.assign(newElement.style, styles);
+
+        for(let i = 0; i < attributes.length; i += 2) {
+            newElement.setAttribute(attributes[i], attributes[i + 1]);
+        }
+
+        if (textContent !== "") newElement.textContent = textContent;
+
+        if (innerHTML !== "") newElement.innerHTML = innerHTML;
+
+        parent.appendChild(newElement);
+
+        return newElement;
+    }
 }
 
 module.exports = Utility;

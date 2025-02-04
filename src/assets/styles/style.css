@@ -42,6 +42,7 @@ header {
     padding: 10px 20px;
     position: sticky;
     top: 0;
+    z-index: 2;
 
     & input[type="image"] {
         width: 30px;
