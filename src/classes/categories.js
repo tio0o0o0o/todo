@@ -1,19 +1,19 @@
 class Categories {
     static categoryList = [];
 
-    static createCategory(name) {
+    static create(name) {
         if (this.checkNameExists(name)) return false;
 
         this.categoryList.push(name);
     }
 
-    static deleteCategory(name) {
+    static delete(name) {
         this.categoryList = this.categoryList.filter((value) => {
             return value !== name;
         });
     }
 
-    static updateCategory(name, newName) {
+    static update(name, newName) {
         if (this.checkNameExists(newName)) return false;
 
         this.categoryList = this.categoryList.map((value) => {
@@ -29,5 +29,8 @@ class Categories {
         return false;
     }
 }
+
+Categories.create("Business");
+Categories.create("Study");
 
 module.exports = Categories;
