@@ -1,0 +1,119 @@
+/* CSS RESET */
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+/* CSS RESET END */
+
+:root {
+    --black: rgb(36, 36, 36);
+    --lighten: rgba(255, 255, 255, 0.1);
+    --green: rgb(0, 201, 141);
+    --darkGreen: rgb(0, 192, 134);
+}
+
+@font-face {
+    font-family: "roboto-condensed";
+    src: url("../fonts/roboto-condensed.ttf");
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav main";
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: max-content 1fr;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif, system-ui;
+}
+
+header {
+    grid-area: header;
+    background-color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    & input[type="image"] {
+        width: 30px;
+        cursor: pointer;
+        box-sizing: content-box;
+        padding: 10px;
+        border-radius: 100px;
+    }
+
+    & input[type="image"]:hover {
+        background-color: var(--lighten);
+    }
+
+    & .left {
+        display: flex;
+        align-items: center;
+        flex: 1 0 0;
+        gap: 15px;
+    }
+
+    & .right {
+        display: flex;
+        align-items: center;
+    }
+
+    & .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    img {
+        width: 30px;
+    }
+
+    & .name {
+        font-size: 30px;
+        font-family: "roboto-condensed", Arial, Helvetica, sans-serif, system-ui;
+    }
+}
+
+nav {
+    grid-area: nav;
+    background-color: var(--black);
+    font-size: 20px;
+    padding: 20px;
+
+    & div {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px 40px 10px 10px;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    & div:not(.add):hover {
+        background-color: var(--lighten);
+    }
+
+    .add {
+        background-color: var(--green);
+        margin-bottom: 10px;
+    }
+
+    .add:hover {
+        background-color: var(--darkGreen);
+    }
+
+    & img {
+        width: 30px;
+    }
+}
+
+main {
+    grid-area: main;
+    background-color: var(--black);
+}
