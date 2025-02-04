@@ -46,9 +46,14 @@ class Tasks {
         }
         return false;
     }
+
+    static getCategory(category) {
+        return this.taskList.filter((value) => value.category === category);
+    }
 }
 
 Tasks.create("Gym", "Go to QT Gym", "Today", "Low", "Health");
+Tasks.create("Yoga", "Go to QT Gym", "Today", "Low", "Health");
 Tasks.create("Brush teeth", "", "Today", "Low", "Basic stuff");
 
 module.exports = Tasks;
