@@ -3,10 +3,13 @@ const cross = require("../../assets/images/cross.svg");
 const Utility = require("../utility.js");
 import "../../assets/styles/notes.css";
 
-
 class NoteDisplay {
     static clearDisplay(parent) {
         Utility.removeChildElements(parent);
+    }
+
+    static createDisplay(columnCount, parent) {
+        return this.createNotes(this.createColumns(columnCount, parent));
     }
 
     static createColumns(columnCount, parent) {
@@ -98,6 +101,6 @@ class NoteDisplay {
     }
 }
 
-NoteDisplay.createNotes(NoteDisplay.createColumns(4, document.querySelector("main")));
+alert("NoteDisplay");
 
-
+module.exports = NoteDisplay;
