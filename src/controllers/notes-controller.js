@@ -1,16 +1,16 @@
 import NotesModel from "../models/notes-model.js";
 import NotesView from "../views/notes-view.js";
 
-const notesView = new NotesView();
-
 class NotesController {
+    #notesView = new NotesView();
+
     get notes() {
         return NotesModel.read();
     }
 
     updateView() {
-        notesView.delete();
-        notesView.create(this.notes);
+        this.#notesView.delete();
+        this.#notesView.create(this.notes);
         this.#assignDelete();
         this.#assignCreate();
         this.#assignUpdateDescription();
@@ -83,4 +83,4 @@ class NotesController {
 
 const notesController = new NotesController();
 
-notesController.createPlaceholder(5);
+notesController.updateView();
