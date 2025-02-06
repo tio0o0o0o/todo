@@ -18,13 +18,16 @@ document.querySelector(".categoriesLink").addEventListener("click", () => {
 });
 
 document.querySelector(".allLink").addEventListener("click", () => {
-    tasksController.updateView();
+    tasksController.dateFilter = "all";
+    tasksController.updateView(tasksController.allTasks);
 });
 
 document.querySelector(".todayLink").addEventListener("click", () => {
-    tasksController.updateView();
+    tasksController.dateFilter = "today";
+    tasksController.updateView(tasksController.todaysTasks);
 });
 
 document.querySelector(".weekLink").addEventListener("click", () => {
-    tasksController.updateView();
+    tasksController.dateFilter = "week";
+    tasksController.updateView(tasksController.thisWeeksTasks);
 });

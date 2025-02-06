@@ -3,7 +3,7 @@ import Task from "./task.js";
 export default class TasksModel {
     static tasks = [];
 
-    static create({ title = "", description = "", dueDate = "", priority = "mid", category = "" } = {}) {
+    static create({ title = "", description = "", dueDate = new Date(), priority = "mid", category = "" } = {}) {
         if (!title && !description && !dueDate && !priority) throw new Error("Title, description, and dueDate are required");
 
         const newTask = new Task(title, description, dueDate, priority, category);
@@ -11,11 +11,8 @@ export default class TasksModel {
         return newTask;
     }
 
-    static read({ dueDate = "", category = "" } = {}) {
-        const filteredTasks = this.tasks;
-        if (dueDate) filteredTasks = this.tasks.filter((task) => task.dueDate === dueDate);
-        if (category) filteredTasks = this.tasks.filter((task) => task.category === "category");
-        return filteredTasks;
+    static read() {
+        return this.tasks;
     }
 
     static update(id, { title = "", description, dueDate = "", priority = "", category } = {}) {

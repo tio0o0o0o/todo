@@ -3,6 +3,7 @@ const deleteImg = require("../assets/images/delete.svg");
 const edit = require("../assets/images/edit.svg");
 const plus = require("../assets/images/add.svg");
 import "../assets/styles/tasks.css";
+const { format } = require("date-fns");
 
 export default class TasksView {
     constructor(parent = document.querySelector("main")) {
@@ -51,6 +52,13 @@ export default class TasksView {
             attributes: ["class", "taskTitle"],
             textContent: task.title,
             parent: left
+        });
+
+        const dueDate = Utility.createElement({
+            tag: "p",
+            attributes: ["class", "taskDueDate"],
+            textContent: format(task.dueDate, "MMM do"),
+            parent: right
         });
 
         const editButton = Utility.createElement({
