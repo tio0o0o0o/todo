@@ -41,6 +41,14 @@ class Utility {
     static getColumnPosition(position, columnLength) {
         return position % columnLength;
     }
+
+    static assignFunction({ elements, functionToAssign, event = "click" } = {}) {
+        elements.forEach((element, index) => {
+            element.addEventListener(event, () => {
+                functionToAssign(element, index);
+            });
+        });
+    }
 }
 
 module.exports = Utility;

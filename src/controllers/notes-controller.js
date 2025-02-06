@@ -1,7 +1,8 @@
 import NotesModel from "../models/notes-model.js";
 import NotesView from "../views/notes-view.js";
+import Utility from "../utility/utility.js";
 
-class NotesController {
+export default class NotesController {
     #notesView = new NotesView();
 
     get notes() {
@@ -27,16 +28,8 @@ class NotesController {
         this.updateView();
     }
 
-    #assignFunction({ elements, functionToAssign, event = "click" } = {}) {
-        elements.forEach((element, index) => {
-            element.addEventListener(event, () => {
-                functionToAssign(element, index);
-            });
-        });
-    }
-
     #assignDelete() {
-        this.#assignFunction({
+        Utility.assignFunction({
             elements: document.querySelectorAll(".deleteButton"),
             functionToAssign: (element) => {
                 NotesModel.delete(element.parentNode.dataset.id);
@@ -46,7 +39,7 @@ class NotesController {
     }
 
     #assignCreate() {
-        this.#assignFunction({
+        Utility.assignFunction({
             elements: [document.querySelector(".createNoteButton")],
             functionToAssign: () => {
                 NotesModel.create();
@@ -56,7 +49,7 @@ class NotesController {
     }   
 
     #assignUpdateDescription() {
-        this.#assignFunction({
+        Utility.assignFunction({
             elements: document.querySelectorAll(".description"),
             functionToAssign: (element) => {
                 NotesModel.update(element.parentNode.dataset.id, {
@@ -68,7 +61,7 @@ class NotesController {
     }
 
     #assignUpdateTitle() {
-        this.#assignFunction({
+        Utility.assignFunction({
             elements: document.querySelectorAll(".title"),
             functionToAssign: (element) => {
                 NotesModel.update(element.parentNode.dataset.id, {
@@ -81,6 +74,4 @@ class NotesController {
     }
 }
 
-const notesController = new NotesController();
 
-notesController.updateView();

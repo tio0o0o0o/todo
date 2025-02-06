@@ -10,6 +10,9 @@
     line-height: 1.2;
     letter-spacing: 0.5px;
 }
+a {
+    color: inherit;
+}
 /* CSS RESET END */
 
 :root {
@@ -76,6 +79,7 @@ header {
         display: flex;
         align-items: center;
         gap: 10px;
+        cursor: pointer;
     }
 
     img {
@@ -101,7 +105,6 @@ nav {
         display: flex;
         align-items: center;
         gap: 20px;
-        padding: 10px 40px 10px 10px;
         border-radius: 100px;
         cursor: pointer;
     }
@@ -121,6 +124,26 @@ nav {
 
     & img {
         width: 30px;
+    }
+
+    &[data-display = "condensed"] {
+        & p {
+            display: none;
+        }
+
+        & div {
+            padding: 10px;
+        }
+    }
+
+    &[data-display = "expanded"] {
+        & p {
+            display: block;
+        }
+
+        & div {
+            padding: 10px 40px 10px 10px;
+        }
     }
 }
 
