@@ -5,7 +5,10 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    outline: none;
+    appearance: none;
     line-height: 1.2;
+    letter-spacing: 0.5px;
 }
 /* CSS RESET END */
 
@@ -31,16 +34,17 @@ body {
     grid-template-rows: max-content 1fr;
     color: white;
     font-family: Arial, Helvetica, sans-serif, system-ui;
+    background-color: var(--black);
 }
 
 header {
     grid-area: header;
-    background-color: var(--black);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     position: sticky;
+    background-color: var(--black);
     top: 0;
     z-index: 2;
 
@@ -86,7 +90,6 @@ header {
 
 nav {
     grid-area: nav;
-    background-color: var(--black);
     font-size: 20px;
     padding: 20px 20px 0 20px;
     height: calc(100vh - 70px);
@@ -123,5 +126,6 @@ nav {
 
 main {
     grid-area: main;
-    background-color: var(--black);
+    position: relative;
+    margin: 20px 40px 20px 20px;
 }

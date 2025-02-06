@@ -24,7 +24,7 @@ class Utility {
         }
     }
 
-    static createElement({ tag = "div", styles = {}, attributes = [], textContent = "", innerHTML = "", parent = "" } = {}) {
+    static createElement({ tag = "div", styles = {}, hoverStyles = {}, attributes = [], textContent = "", innerHTML = "", parent = "" } = {}) {
         const element = document.createElement(tag);
         if (Object.keys(styles).length !== 0) Object.assign(element.style, styles);
         if (attributes.length !== 0) {
