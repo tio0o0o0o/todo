@@ -25,7 +25,6 @@ export default class NotesController {
                 description: "1. First item\n2. Second item\n3. Third item"
             });
         }
-        this.updateView();
     }
 
     #assignDelete() {

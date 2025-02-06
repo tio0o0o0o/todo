@@ -1,5 +1,4 @@
 import Utility from "../utility/utility.js";
-import Colors from "../utility/colors.js"
 const cross = require("../assets/images/cross.svg");
 const plus = require("../assets/images/add.svg");
 import "../assets/styles/notes.css";
@@ -50,7 +49,6 @@ export default class NotesView {
         const deleteButton = Utility.createElement({
             tag: "input",
             attributes: ["class", "deleteButton", "type", "image", "src", cross],
-            textContent: "Delete",
             parent: newNote
         });
     }
