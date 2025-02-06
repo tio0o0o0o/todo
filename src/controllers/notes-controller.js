@@ -13,13 +13,15 @@ class NotesController {
         notesView.create(this.notes);
         this.#assignDelete();
         this.#assignCreate();
+        this.#assignUpdateDescription();
+        this.#assignUpdateTitle();
     }
 
     createPlaceholder(count = 1) {
         for (let i = 0; i < count; i++) {
             NotesModel.create({
                 title: `Placeholder note ${i + 1}`,
-                description: "1. First item 2. Second item 3. Third item"
+                description: "1. First item\n2. Second item\n3. Third item"
             });
         }
         this.updateView();
@@ -52,6 +54,31 @@ class NotesController {
             }
         });
     }   
+
+    #assignUpdateDescription() {
+        this.#assignFunction({
+            elements: document.querySelectorAll(".description"),
+            functionToAssign: (element) => {
+                NotesModel.update(element.parentNode.dataset.id, {
+                    description: element.value
+                });
+            },
+            event: "focusout"
+        });
+    }
+
+    #assignUpdateTitle() {
+        this.#assignFunction({
+            elements: document.querySelectorAll(".title"),
+            functionToAssign: (element) => {
+                NotesModel.update(element.parentNode.dataset.id, {
+                    title: element.value
+                });
+                console.table(this.notes);
+            },
+            event: "focusout"
+        });
+    }
 }
 
 const notesController = new NotesController();

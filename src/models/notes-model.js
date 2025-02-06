@@ -14,7 +14,7 @@ export default class NotesModel {
     }
 
     static update(id, { title = "", description } = {}) {
-        const note = notes.find((note) => note.id === id);
+        const note = this.notes.find((note) => note.id === id);
 
         if (!note) throw new Error(`ID of ${id} was not found`);
 

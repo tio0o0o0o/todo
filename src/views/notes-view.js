@@ -10,7 +10,7 @@ export default class NotesView {
             this.#createNote(note);
         });
 
-        const createNoteButton = Utility.createElement({
+        const Button = Utility.createElement({
             tag: "button",
             attributes: ["class", "createNoteButton"],
             textContent: "+ New Note",
@@ -29,13 +29,20 @@ export default class NotesView {
         });
 
         const title = Utility.createElement({
-            tag: "h1",
-            textContent: note.title,
+            tag: "input",
+            attributes: ["class", "title", "value", note.title],
             parent: newNote
         });
 
         const description = Utility.createElement({
-            tag: "p",
+            tag: "textArea",
+            styles: {
+                resize: "none",
+                width: "300px",
+                height: "200px",
+                overflow: "auto",
+            },
+            attributes: ["class", "description"],
             textContent: note.description,
             parent: newNote
         });
