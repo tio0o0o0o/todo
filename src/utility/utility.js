@@ -1,22 +1,19 @@
 class Utility {
-    static generateId(length = 20) {
+    static randomString(length = 10, options = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123467890") {
         let id = "";
-
         for (let i = 0; i < length; i++) {
-            id += this.randomChar();
+            const randomIndex = this.randomInt(options.length);
+            id += this.randomChar(options);
         }
-
         return id;
     }
 
-    static randomChar(chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") {
-        const availableCharacters = chars.split("");
-        const randomIndex = this.randomInt(availableCharacters.length);
-        const randomChar = availableCharacters[randomIndex];
+    static randomChar(options = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789") {
+        const randomIndex = this.randomInt(options.length);
+        const randomChar = options[randomIndex];
         return randomChar;
     }
 
-    // 0 to max - 1
     static randomInt(max) {
         return Math.floor(Math.random() * max);
     }
@@ -38,7 +35,6 @@ class Utility {
         if (textContent) element.textContent = textContent;
         if (innerHTML) element.innerHTML = innerHTML;
         if (parent) parent.appendChild(element);
-
         return element;
     }
 
