@@ -37,6 +37,7 @@ export default class TasksController {
         this.#assignDelete();
         this.#assignCreate();
         this.#assignUpdate();
+        this.#assignToggleComplete();
     }
 
     createPlaceholder(count = 1) {
@@ -87,6 +88,19 @@ export default class TasksController {
             }
         });
     }   
+
+    #assignToggleComplete() {
+        Utility.assignFunction({
+            event: "input",
+            elements: document.querySelectorAll(".isComplete"),
+            functionToAssign: (element) => {
+                TasksModel.update(element.parentNode.parentNode.dataset.id, {
+                    complete: element.checked
+                });
+                this.updateView();
+            }
+        });
+    }
 }
 
 

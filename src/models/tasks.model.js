@@ -15,7 +15,7 @@ export default class TasksModel {
         return this.tasks;
     }
 
-    static update(id, { title = "", description, dueDate = "", priority = "", category } = {}) {
+    static update(id, { title = "", description, dueDate = "", priority = "", category, complete = "" } = {}) {
         const task = this.tasks.find((task) => task.id === id);
         if (!task) throw new Error(`ID of ${id} was not found`);
         if (title !== "") task.title = title;
@@ -23,6 +23,7 @@ export default class TasksModel {
         if (dueDate !== "") task.dueDate = dueDate;
         if (priority !== "") task.priority = priority;
         if (category !== undefined) task.category = category;
+        if (complete !== "") task.complete = complete; 
     }
 
     static delete(id) {

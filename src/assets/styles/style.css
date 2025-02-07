@@ -109,9 +109,19 @@ nav {
         cursor: pointer;
     }
 
+    /* & div:not(.add):hover[data-selected = false] {
+        background-color: var(--lighten);
+    } */
+
     & div:not(.add):hover {
         background-color: var(--lighten);
     }
+
+    /* 
+    & div[data-selected = true] {
+        background-color: var(--lighten); 
+        background-color: var(--green);
+    } */
 
     .add {
         background-color: var(--green);

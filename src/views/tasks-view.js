@@ -52,6 +52,7 @@ export default class TasksView {
             attributes: ["type", "checkbox", "class", "isComplete"],
             parent: left
         });
+        isComplete.checked = task.complete;
 
         const title = Utility.createElement({
             tag: "p",

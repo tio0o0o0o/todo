@@ -9,25 +9,44 @@ const tasksController = new TasksController();
 notesController.createPlaceholder(3);
 tasksController.createPlaceholder(3);
 
-document.querySelector(".notesLink").addEventListener("click", () => {
+const notesLink = document.querySelector(".notesLink");
+const categoriesLink = document.querySelector(".categoriesLink");
+const allLink = document.querySelector(".allLink");
+const todayLink = document.querySelector(".todayLink");
+const weekLink = document.querySelector(".weekLink");
+const links = [ notesLink, categoriesLink, allLink, todayLink, weekLink ];
+
+notesLink.addEventListener("click", () => {
     notesController.updateView();
+    assignSelected(notesLink);
 });
 
-document.querySelector(".categoriesLink").addEventListener("click", () => {
+categoriesLink.addEventListener("click", () => {
     categoriesController.updateView();
+    assignSelected(categoriesLink);
 });
 
-document.querySelector(".allLink").addEventListener("click", () => {
+allLink.addEventListener("click", () => {
     tasksController.dateFilter = "all";
     tasksController.updateView(tasksController.allTasks);
+    assignSelected(allLink);
 });
 
-document.querySelector(".todayLink").addEventListener("click", () => {
+todayLink.addEventListener("click", () => {
     tasksController.dateFilter = "today";
     tasksController.updateView(tasksController.todaysTasks);
+    assignSelected(todayLink);
 });
 
-document.querySelector(".weekLink").addEventListener("click", () => {
+weekLink.addEventListener("click", () => {
     tasksController.dateFilter = "week";
     tasksController.updateView(tasksController.thisWeeksTasks);
+    assignSelected(weekLink);
 });
+
+function assignSelected(linkToSelect) {
+    links.forEach((link) => {
+        link.dataset.selected = false;
+    });
+    linkToSelect.dataset.selected = true;
+}
