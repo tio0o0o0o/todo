@@ -35,7 +35,8 @@ export default class TasksController {
         this.#tasksView.delete();
         this.#tasksView.create(this.filteredTasks);
         this.#assignDelete();
-        this.#assignCreate();
+        // this.#assignCreate();
+        this.#assignCreateModal();
         this.#assignUpdate();
         this.#assignToggleComplete();
     }
@@ -76,6 +77,15 @@ export default class TasksController {
             }
         });
     }  
+
+    #assignCreateModal() {
+        Utility.assignFunction({
+            elements: [document.querySelector(".createTaskButton")],
+            functionToAssign: () => {
+                document.querySelector(".createTaskModal").showModal();
+            }
+        });
+    }
     
     #assignUpdate() {
         Utility.assignFunction({

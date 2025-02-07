@@ -17,10 +17,12 @@ a {
 
 :root {
     --black: rgb(36, 36, 36);
+    --lightBlack: rgb(58, 58, 58);
     --lighten: rgba(255, 255, 255, 0.1);
     --extraLighten: rgba(255, 255, 255, 0.3);
     --green: rgb(0, 201, 141);
     --darkGreen: rgb(0, 192, 134);
+    --darken: rgba(0, 0, 0, 0.8);
 }
 
 @font-face {
@@ -39,6 +41,7 @@ body {
     color: white;
     font-family: Arial, Helvetica, sans-serif, system-ui;
     background-color: var(--black);
+    position: relative;
 }
 
 header {
@@ -148,3 +151,102 @@ main {
     position: relative;
     margin: 20px 40px 20px 20px;
 }
+
+.createTaskModal {
+    width: min-content;
+    height: min-content;
+    color: white;
+    position: fixed;
+    background-color: var(--black);
+    margin: auto;
+    z-index: 3;
+    border-radius: 14px;
+    padding: 20px;
+    border: none;
+
+    &::backdrop {
+        background-color: var(--darken);
+    }
+
+    & h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    & .buttons {
+        display: flex;
+        justify-content: end;
+        gap: 20px;
+        width: 100%;
+    }
+
+    & button {
+        border: none;
+        border-radius: 100px;
+        font-size: 16px;
+        padding: 10px 30px;
+    }
+
+    & input {
+        border: none;
+        background-color: var(--lighten);
+        color: white;
+        margin-bottom: 20px;
+        font-size: 22px;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    & textarea {
+        width: 450px;
+        height: 150px;
+        font-size: 18px;
+        border: none;
+        background-color: var(--lighten);
+        resize: none;
+        color: white;
+        margin-bottom: 20px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .configLabels {
+        width: 100%;
+        display: flex;
+        margin-bottom: 5px;
+    }
+
+    .configLabels > label {
+        width: calc(100% / 3);
+        font-weight: bold;
+    }
+
+    .config {
+        display: flex;
+        margin-bottom: 40px;
+        gap: 20px;
+        height: 40px;
+    }
+
+    #prioritySelect, #categorySelect, #dateSelect {
+        width: calc(100% / 3);
+        height: 40px;
+        border-radius: 10px;
+        background-color: var(--lighten);
+        border: none;
+        color: white;
+        font-size: 16px;
+        padding: 0 10px;
+    }
+
+    #dateSelect {
+        color-scheme: dark;
+    }
+
+    option {
+        background-color: var(--lightBlack);
+        color: white;
+    }
+}
+

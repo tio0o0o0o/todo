@@ -41,5 +41,33 @@
         </div>
     </nav>
     <main></main>
+    <dialog class="createTaskModal">
+        <h1>Add task</h1>
+        <input type="text" id="createTitleInput" placeholder="Title">
+        <textarea id="createDescriptionInput" placeholder="Description"></textarea>
+        <div class="configLabels">
+            <label for="prioritySelect">Priority</label>
+            <label for="categorySelect">Category</label>
+            <label for="dateSelect">Due date</label>
+        </div>
+        <div class="config">
+            <select id="prioritySelect" aria-label="Priority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <select id="categorySelect" aria-label="Category">
+                <option value="default">Default</option>
+                <option value="study">Study</option>
+                <option value="gym">Gym</option>
+                <option value="business">Business</option>
+            </select>
+            <input type="date" id="dateSelect">
+        </div>
+        <div class="buttons">
+            <button>Cancel</button>
+            <button>Add</button>
+        </div>
+    </dialog>
 </body>
 </html>
