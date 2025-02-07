@@ -1,6 +1,7 @@
 import NotesController from "./notes-controller.js";
 import CategoriesController from "./categories-controller.js";
 import TasksController from "./tasks-controller.js";
+import Utility from "../utility/utility.js";
 
 const notesController = new NotesController();
 const categoriesController = new CategoriesController();
@@ -28,18 +29,21 @@ categoriesLink.addEventListener("click", () => {
 
 allLink.addEventListener("click", () => {
     tasksController.dateFilter = "all";
+    tasksController.categoryFilter = "all";
     tasksController.updateView(tasksController.allTasks);
     assignSelected(allLink);
 });
 
 todayLink.addEventListener("click", () => {
     tasksController.dateFilter = "today";
+    tasksController.categoryFilter = "all";
     tasksController.updateView(tasksController.todaysTasks);
     assignSelected(todayLink);
 });
 
 weekLink.addEventListener("click", () => {
     tasksController.dateFilter = "week";
+    tasksController.categoryFilter = "all";
     tasksController.updateView(tasksController.thisWeeksTasks);
     assignSelected(weekLink);
 });

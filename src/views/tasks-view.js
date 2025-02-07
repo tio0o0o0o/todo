@@ -3,6 +3,7 @@ const deleteImg = require("../assets/images/delete.svg");
 const edit = require("../assets/images/edit.svg");
 const plus = require("../assets/images/add.svg");
 import "../assets/styles/tasks.css";
+import CategoriesModel from "../models/categories-model.js";
 const { format } = require("date-fns");
 
 export default class TasksView {
@@ -11,6 +12,8 @@ export default class TasksView {
     }
 
     create(tasks) {
+        this.#createCategoryFilter();
+
         const flexContainer = Utility.createElement({
             tag: "div",
             attributes: ["class", "flexContainer"],
@@ -25,6 +28,30 @@ export default class TasksView {
             tag: "input",
             attributes: ["class", "createTaskButton", "type", "image", "src", plus],
             parent: this.parent
+        });
+    }
+
+    #createCategoryFilter() {
+        const filterFlexContainer = Utility.createElement({
+            tag: "div",
+            attributes: ["class", "filterFlexContainer"],
+            parent: this.parent
+        });
+
+        const defaultFilter = Utility.createElement({
+            tag: "p",
+            attributes: ["class", "filter", "data-filter", "all"],
+            textContent: "All categories",
+            parent: filterFlexContainer
+        });
+
+        const filters = CategoriesModel.read().forEach((category) => {
+            Utility.createElement({
+                tag: "p",
+                attributes: ["class", "filter", "data-filter", category],
+                textContent: Utility.capitalize(category),
+                parent: filterFlexContainer
+            });
         });
     }
 

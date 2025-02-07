@@ -4,6 +4,7 @@
     --lighten: rgba(255, 255, 255, 0.1);
     --green: rgb(0, 201, 141);
     --darkGreen: rgb(0, 192, 134);
+    --grey: rgb(102, 102, 102);
 }
 
 .isComplete {
@@ -77,5 +78,23 @@
 
     &:hover {
         background-color: var(--darkGreen);
+    }
+}
+
+.filterFlexContainer {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--lighten);
+}
+
+.filter {
+    font-size: 20px;
+    width: fit-content;
+    height: 100%;
+    letter-spacing: 0;
+    padding: 0 60px 20px 20px;
+
+    &:hover {
+        box-shadow: 0 4px var(--grey);
     }
 }

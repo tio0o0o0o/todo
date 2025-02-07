@@ -28,7 +28,9 @@ export default class TasksController {
             case "all":
                 break;
             default:
-                throw new Error("categoryFilter is not a valid filter");
+                filteredTasks = filteredTasks.filter((task) => {
+                    return task.category === this.categoryFilter;
+                });
         }
         return filteredTasks;
     }
@@ -36,6 +38,7 @@ export default class TasksController {
     updateView() {
         this.#tasksView.delete();
         this.#tasksView.create(this.filteredTasks);
+        this.#initializeFilters();
         this.#assignDelete();
         this.#assignShowModal();
         this.#assignToggleComplete();
@@ -88,7 +91,7 @@ export default class TasksController {
                     description: descriptionInput.value,
                     dueDate: new Date(dateSelect.value),
                     priority: prioritySelect.value,
-                    category: categorySelect.value
+                    category: categorySelect.value.toLowerCase()
                 });
                 titleInput.value = "";
                 descriptionInput.value = "";
@@ -240,7 +243,7 @@ export default class TasksController {
                     description: descriptionInput.value,
                     dueDate: new Date(dateSelect.value),
                     priority: prioritySelect.value,
-                    category: categorySelect.value
+                    category: categorySelect.value.toLowerCase()
                 });
                 titleInput.value = "";
                 descriptionInput.value = "";
@@ -248,6 +251,16 @@ export default class TasksController {
                 categorySelect.value = "default";
                 prioritySelect.value = "medium";
                 modal.close();
+                this.updateView();
+            }
+        });
+    }
+
+    #initializeFilters() {
+        Utility.assignFunction({
+            elements: document.querySelectorAll(".filter"),
+            functionToAssign: (element) => {
+                this.categoryFilter = element.dataset.filter;
                 this.updateView();
             }
         });

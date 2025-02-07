@@ -8,7 +8,10 @@ export default class CategoriesModel {
     }
 
     static read() {
-        return this.categories;
+        const lowerCaseCategoriesList = this.categories.map((value) => {
+            return value.toLowerCase();
+        });
+        return lowerCaseCategoriesList;
     }
 
     static update(name, newName) {
