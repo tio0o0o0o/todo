@@ -18,6 +18,7 @@ a {
 :root {
     --black: rgb(36, 36, 36);
     --lighten: rgba(255, 255, 255, 0.1);
+    --extraLighten: rgba(255, 255, 255, 0.3);
     --green: rgb(0, 201, 141);
     --darkGreen: rgb(0, 192, 134);
 }
@@ -109,27 +110,12 @@ nav {
         cursor: pointer;
     }
 
-    /* & div:not(.add):hover[data-selected = false] {
-        background-color: var(--lighten);
-    } */
-
-    & div:not(.add):hover {
+    & div:not(.add):hover[data-selected = false] {
         background-color: var(--lighten);
     }
 
-    /* 
     & div[data-selected = true] {
-        background-color: var(--lighten); 
-        background-color: var(--green);
-    } */
-
-    .add {
-        background-color: var(--green);
-        margin-bottom: 10px;
-    }
-
-    .add:hover {
-        background-color: var(--darkGreen);
+        background-color: var(--extraLighten);
     }
 
     & img {
