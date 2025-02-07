@@ -2,6 +2,7 @@ import TasksModel from "../models/tasks.model.js";
 import TasksView from "../views/tasks-view.js";
 import Utility from "../utility/utility.js";
 import { el } from "date-fns/locale";
+import CategoriesModel from "../models/categories-model.js";
 const { isThisWeek, isToday, format } = require("date-fns");
 
 export default class TasksController {
@@ -127,7 +128,13 @@ export default class TasksController {
                 const modal = document.querySelector(".createTaskModal");
                 const categorySelect = modal.querySelector("#categorySelect");
                 Utility.removeChildElements(categorySelect);
-                const categoryList = ["gym", "study", "business"];
+                const categoryList = CategoriesModel.categories;
+                Utility.createElement({
+                    tag: "option",
+                    attributes: ["value", "default"],
+                    textContent: "Default",
+                    parent: categorySelect
+                });
                 categoryList.forEach((category) => {
                     Utility.createElement({
                         tag: "option",
@@ -174,7 +181,13 @@ export default class TasksController {
                 editTaskModal.querySelector("#editPrioritySelect").value = taskData.priority;
                 const editCategorySelect = editTaskModal.querySelector("#editCategorySelect");
                 Utility.removeChildElements(editCategorySelect);
-                const categoryList = ["gym", "study", "business"];
+                Utility.createElement({
+                    tag: "option",
+                    attributes: ["value", "default"],
+                    textContent: "Default",
+                    parent: editCategorySelect
+                });
+                const categoryList = CategoriesModel.categories;
                 categoryList.forEach((category) => {
                     Utility.createElement({
                         tag: "option",

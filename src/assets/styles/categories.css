@@ -1,0 +1,52 @@
+:root {
+    --black: rgb(36, 36, 36);
+    --lightBlack: rgb(58, 58, 58);
+    --lighten: rgba(255, 255, 255, 0.1);
+    --extraLighten: rgba(255, 255, 255, 0.3);
+    --green: rgb(0, 201, 141);
+    --darkGreen: rgb(0, 192, 134);
+    --darken: rgba(0, 0, 0, 0.8);
+}
+
+.categoriesWrapper {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.createCategoryButton {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: var(--green);
+    box-sizing: content-box;
+    padding: 10px;
+    width: 50px;
+    border-radius: 100px;
+
+    &:hover {
+        background-color: var(--darkGreen);
+    }
+}
+
+.newCard {
+    display: flex;
+    gap: 20px;
+    background-color: var(--lighten);
+    padding: 20px;
+    border-radius: 14px;
+    align-items: center;
+}
+
+.categoryName {
+    font-size: 20px;
+    width: 200px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    overflow-x: visible;
+}
+
+.deleteCategoryButton {
+
+}

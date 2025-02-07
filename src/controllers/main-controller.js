@@ -52,3 +52,7 @@ function assignSelected(linkToSelect) {
 }
 
 tasksController.initializeView();
+
+tasksController.dateFilter = "all";
+tasksController.updateView(tasksController.allTasks);
+assignSelected(allLink);
