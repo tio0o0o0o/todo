@@ -1,7 +1,8 @@
 export default class CategoriesModel {
-    static categories = ["Edging", "Rizzing", "Looksmaxxing"];
+    static categories = ["edging", "rizzing", "looksmaxxing"];
 
     static create(name) {
+        name = name.toLowerCase();
         if (this.categories.find((value) => value === name)) return false;
         if (name === "") return false;
         this.categories.push(name);
@@ -15,6 +16,8 @@ export default class CategoriesModel {
     }
 
     static update(name, newName) {
+        name = name.toLowerCase();
+        newName = newName.toLowerCase();
         this.categories.forEach((value, index) => {
             if (value === name && newName != "") {
                 if (this.categories.find((value) => value === newName)) return false;

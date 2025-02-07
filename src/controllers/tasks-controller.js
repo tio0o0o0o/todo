@@ -190,11 +190,11 @@ export default class TasksController {
                     textContent: "Default",
                     parent: editCategorySelect
                 });
-                const categoryList = CategoriesModel.categories;
+                const categoryList = CategoriesModel.read();
                 categoryList.forEach((category) => {
                     Utility.createElement({
                         tag: "option",
-                        attributes: ["value", category],
+                        attributes: ["value", category.toLowerCase()],
                         textContent: Utility.capitalize(category),
                         parent: editCategorySelect
                     });
