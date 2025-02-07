@@ -98,3 +98,7 @@
         box-shadow: 0 4px var(--grey);
     }
 }
+
+.filter[data-selected = true] {
+    box-shadow: 0 4px var(--green);
+}

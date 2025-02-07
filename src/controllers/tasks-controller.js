@@ -43,6 +43,7 @@ export default class TasksController {
         this.#assignShowModal();
         this.#assignToggleComplete();
         this.#assignOpenEditModal();
+        this.#assignSelectedCategory();
     }
 
     initializeView() {
@@ -257,14 +258,27 @@ export default class TasksController {
     }
 
     #initializeFilters() {
+        console.log("Init filters");
         Utility.assignFunction({
             elements: document.querySelectorAll(".filter"),
             functionToAssign: (element) => {
+                console.log("Clicked on filter");
                 this.categoryFilter = element.dataset.filter;
                 this.updateView();
             }
         });
     }
+
+    #assignSelectedCategory(categoryToSelect = this.categoryFilter) {
+        console.log("Assign selected");
+        document.querySelectorAll(".filter").forEach((filter) => {
+            if (categoryToSelect === filter.dataset.filter) {
+                filter.dataset.selected = true;
+            }
+            else filter.dataset.selected = false;
+        });
+    }
+    
 }
 
 

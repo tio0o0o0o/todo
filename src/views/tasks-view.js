@@ -40,7 +40,7 @@ export default class TasksView {
 
         const defaultFilter = Utility.createElement({
             tag: "p",
-            attributes: ["class", "filter", "data-filter", "all"],
+            attributes: ["class", "filter", "data-filter", "all", "data-selected", false],
             textContent: "All categories",
             parent: filterFlexContainer
         });
@@ -48,7 +48,7 @@ export default class TasksView {
         const filters = CategoriesModel.read().forEach((category) => {
             Utility.createElement({
                 tag: "p",
-                attributes: ["class", "filter", "data-filter", category],
+                attributes: ["class", "filter", "data-filter", category, "data-selected", false],
                 textContent: Utility.capitalize(category),
                 parent: filterFlexContainer
             });
