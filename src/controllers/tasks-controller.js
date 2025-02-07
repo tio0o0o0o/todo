@@ -1,6 +1,7 @@
 import TasksModel from "../models/tasks.model.js";
 import TasksView from "../views/tasks-view.js";
 import Utility from "../utility/utility.js";
+import { el } from "date-fns/locale";
 const { isThisWeek, isToday, format } = require("date-fns");
 
 export default class TasksController {
@@ -43,6 +44,8 @@ export default class TasksController {
     initializeView() {
         this.#assignCancel();
         this.#assignCreate();
+        this.#assignCancelEdit();
+        this.#assignEdit();
         this.#assignInitializeModal();
     }
 
@@ -122,6 +125,17 @@ export default class TasksController {
             elements: [document.querySelector(".createTaskButton")],
             functionToAssign: () => {
                 const modal = document.querySelector(".createTaskModal");
+                const categorySelect = modal.querySelector("#categorySelect");
+                Utility.removeChildElements(categorySelect);
+                const categoryList = ["gym", "study", "business"];
+                categoryList.forEach((category) => {
+                    Utility.createElement({
+                        tag: "option",
+                        attributes: ["value", category],
+                        textContent: Utility.capitalize(category),
+                        parent: categorySelect
+                    });
+                });
                 modal.showModal();
             }
         });
@@ -132,16 +146,6 @@ export default class TasksController {
         const dateSelect = modal.querySelector("#dateSelect");
         const today = format(new Date(), 'yyyy-MM-dd');
         dateSelect.defaultValue = today;
-        const categorySelect = modal.querySelector("#categorySelect");
-        const categoryList = ["gym", "study", "business"];
-        categoryList.forEach((category) => {
-            Utility.createElement({
-                tag: "option",
-                attributes: ["value", category],
-                textContent: Utility.capitalize(category),
-                parent: categorySelect
-            });
-        });
     }
 
     #assignToggleComplete() {
@@ -163,11 +167,13 @@ export default class TasksController {
             functionToAssign: (element) => {
                 const editTaskModal = document.querySelector(".editTaskModal");
                 const parentElementId = element.parentNode.parentNode.dataset.id;
+                editTaskModal.dataset.id = parentElementId;
                 const taskData = TasksModel.find(parentElementId);
                 editTaskModal.querySelector("#editTitleInput").value = taskData.title;
                 editTaskModal.querySelector("#editDescriptionInput").value = taskData.description;
                 editTaskModal.querySelector("#editPrioritySelect").value = taskData.priority;
                 const editCategorySelect = editTaskModal.querySelector("#editCategorySelect");
+                Utility.removeChildElements(editCategorySelect);
                 const categoryList = ["gym", "study", "business"];
                 categoryList.forEach((category) => {
                     Utility.createElement({
@@ -180,6 +186,56 @@ export default class TasksController {
                 if (taskData.category !== "") editCategorySelect.value = taskData.category;
                 editTaskModal.querySelector("#editDateSelect").value = format(taskData.dueDate, 'yyyy-MM-dd')
                 editTaskModal.showModal();
+            }
+        });
+    }
+
+    #assignCancelEdit() {
+        Utility.assignFunction({
+            elements: [document.querySelector("#cancelEditButton")],
+            functionToAssign: () => {
+                const modal = document.querySelector(".editTaskModal");
+                const titleInput = modal.querySelector("#editTitleInput");
+                const descriptionInput = modal.querySelector("#editDescriptionInput");
+                const dateSelect = modal.querySelector("#editDateSelect");
+                const categorySelect = modal.querySelector("#editCategorySelect");
+                const prioritySelect = modal.querySelector("#editPrioritySelect");
+                titleInput.value = "";
+                descriptionInput.value = "";
+                dateSelect.value = format(new Date(), 'yyyy-MM-dd');
+                categorySelect.value = "default";
+                prioritySelect.value = "medium";
+                modal.close();
+            }
+        });
+    }
+
+    #assignEdit() {
+        console.log("Assign edit");
+        Utility.assignFunction({
+            elements: [document.querySelector("#confirmEditButton")],
+            functionToAssign: (element) => {
+                const modal = document.querySelector(".editTaskModal");
+                const titleInput = modal.querySelector("#editTitleInput");
+                const descriptionInput = modal.querySelector("#editDescriptionInput");
+                const dateSelect = modal.querySelector("#editDateSelect");
+                const categorySelect = modal.querySelector("#editCategorySelect");
+                const prioritySelect = modal.querySelector("#editPrioritySelect");
+
+                TasksModel.update(element.parentNode.parentNode.dataset.id, {
+                    title: titleInput.value,
+                    description: descriptionInput.value,
+                    dueDate: new Date(dateSelect.value),
+                    priority: prioritySelect.value,
+                    category: categorySelect.value
+                });
+                titleInput.value = "";
+                descriptionInput.value = "";
+                dateSelect.value = format(new Date(), 'yyyy-MM-dd');
+                categorySelect.value = "default";
+                prioritySelect.value = "medium";
+                modal.close();
+                this.updateView();
             }
         });
     }
