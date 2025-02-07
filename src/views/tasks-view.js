@@ -47,6 +47,12 @@ export default class TasksView {
             parent: newTask
         });
 
+        const isComplete = Utility.createElement({
+            tag: "input",
+            attributes: ["type", "checkbox", "class", "isComplete"],
+            parent: left
+        });
+
         const title = Utility.createElement({
             tag: "p",
             attributes: ["class", "taskTitle"],
