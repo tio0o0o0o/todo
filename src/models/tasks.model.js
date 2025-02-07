@@ -4,7 +4,7 @@ export default class TasksModel {
     static tasks = [];
 
     static create({ title = "", description = "", dueDate = new Date(), priority = "mid", category = "" } = {}) {
-        if (!title && !description && !dueDate && !priority) throw new Error("Title, description, and dueDate are required");
+        if (title === "") title = "New task";
 
         const newTask = new Task(title, description, dueDate, priority, category);
         this.tasks.push(newTask);

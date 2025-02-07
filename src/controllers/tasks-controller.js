@@ -35,14 +35,15 @@ export default class TasksController {
         this.#tasksView.delete();
         this.#tasksView.create(this.filteredTasks);
         this.#assignDelete();
-        this.#assignCreateModal();
         this.#assignUpdate();
+        this.#assignShowModal();
         this.#assignToggleComplete();
     }
 
     initializeView() {
         this.#assignCancel();
         this.#assignCreate();
+        this.#assignInitializeModal();
     }
 
     createPlaceholder(count = 1) {
@@ -75,15 +76,21 @@ export default class TasksController {
                 const titleInput = modal.querySelector("#createTitleInput");
                 const descriptionInput = modal.querySelector("#createDescriptionInput");
                 const dateSelect = modal.querySelector("#dateSelect");
+                const categorySelect = modal.querySelector("#categorySelect");
+                const prioritySelect = modal.querySelector("#prioritySelect");
+                
                 TasksModel.create({
                     title: titleInput.value,
                     description: descriptionInput.value,
                     dueDate: new Date(dateSelect.value),
-                    priority: "mid"
+                    priority: prioritySelect.value,
+                    category: categorySelect.value
                 });
                 titleInput.value = "";
                 descriptionInput.value = "";
                 dateSelect.value = format(new Date(), 'yyyy-MM-dd');
+                categorySelect.value = "default";
+                prioritySelect.value = "medium";
                 modal.close();
                 this.updateView();
             }
@@ -95,31 +102,45 @@ export default class TasksController {
             elements: [document.querySelector("#cancelNewTaskButton")],
             functionToAssign: () => {
                 const modal = document.querySelector(".createTaskModal");
+                const titleInput = modal.querySelector("#createTitleInput");
+                const descriptionInput = modal.querySelector("#createDescriptionInput");
+                const dateSelect = modal.querySelector("#dateSelect");
+                const categorySelect = modal.querySelector("#categorySelect");
+                const prioritySelect = modal.querySelector("#prioritySelect");
+                titleInput.value = "";
+                descriptionInput.value = "";
+                dateSelect.value = format(new Date(), 'yyyy-MM-dd');
+                categorySelect.value = "default";
+                prioritySelect.value = "medium";
                 modal.close();
             }
         });
     }
 
-    #assignCreateModal() {
+    #assignShowModal() {
         Utility.assignFunction({
             elements: [document.querySelector(".createTaskButton")],
             functionToAssign: () => {
                 const modal = document.querySelector(".createTaskModal");
-                const dateSelect = modal.querySelector("#dateSelect");
-                const today = format(new Date(), 'yyyy-MM-dd');
-                dateSelect.defaultValue = today;
-                const categorySelect = modal.querySelector("#categorySelect");
-                const categoryList = ["gym", "study", "business"];
-                categoryList.forEach((category) => {
-                    Utility.createElement({
-                        tag: "option",
-                        attributes: ["value", category],
-                        textContent: Utility.capitalize(category),
-                        parent: categorySelect
-                    });
-                });
                 modal.showModal();
             }
+        });
+    }
+
+    #assignInitializeModal() {
+        const modal = document.querySelector(".createTaskModal");
+        const dateSelect = modal.querySelector("#dateSelect");
+        const today = format(new Date(), 'yyyy-MM-dd');
+        dateSelect.defaultValue = today;
+        const categorySelect = modal.querySelector("#categorySelect");
+        const categoryList = ["gym", "study", "business"];
+        categoryList.forEach((category) => {
+            Utility.createElement({
+                tag: "option",
+                attributes: ["value", category],
+                textContent: Utility.capitalize(category),
+                parent: categorySelect
+            });
         });
     }
     
