@@ -1,17 +1,8 @@
-:root {
-    --black: rgb(36, 36, 36);
-    --lightBlack: rgb(58, 58, 58);
-    --lighten: rgba(255, 255, 255, 0.1);
-    --extraLighten: rgba(255, 255, 255, 0.3);
-    --green: rgb(0, 201, 141);
-    --darkGreen: rgb(0, 192, 134);
-    --darken: rgba(0, 0, 0, 0.8);
-}
-
 .categoriesWrapper {
     display: flex;
     gap: 20px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .createCategoryButton {
@@ -48,5 +39,12 @@
 }
 
 .deleteCategoryButton {
+    border-radius: 100px;
+    padding: 5px;
+}
 
+.deleteCategoryButton:hover {
+    background-color: var(--lighten);
+    transition-duration: 200ms;
+    transition-property: background-color;
 }

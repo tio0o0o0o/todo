@@ -1,17 +1,10 @@
-:root {
-    --black: rgb(36, 36, 36);
-    --darkWhite: rgb(202, 202, 202);
-    --lighten: rgba(255, 255, 255, 0.1);
-    --green: rgb(0, 201, 141);
-    --darkGreen: rgb(0, 192, 134);
-    --grey: rgb(102, 102, 102);
-}
-
 .isComplete {
     position: relative;
     width: 22px;
     height: 22px;
+    cursor: pointer;
 }
+
 
 .isComplete::after {
     content: "";
@@ -66,6 +59,17 @@
     gap: 20px;
 }
 
+.taskEditButton, .taskDeleteButton {
+    padding: 5px;
+    border-radius: 100px;
+    transition-duration: 200ms;
+    transition-property: background-color;
+
+    &:hover {
+        background-color: var(--lighten);
+    }
+}
+
 .createTaskButton {
     position: fixed;
     bottom: 60px;
@@ -75,6 +79,8 @@
     padding: 10px;
     width: 50px;
     border-radius: 100px;
+    transition-duration: 200ms;
+    transition-property: background-color;
 
     &:hover {
         background-color: var(--darkGreen);
@@ -93,8 +99,11 @@
     height: 100%;
     letter-spacing: 0;
     padding: 0 60px 20px 20px;
+    cursor: pointer;
 
     &:hover {
+        transition-duration: 200ms;
+        transition-property: box-shadow;
         box-shadow: 0 4px var(--grey);
     }
 }

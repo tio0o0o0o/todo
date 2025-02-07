@@ -1,4 +1,8 @@
 import "./assets/styles/style.css";
+import "./assets/styles/tasks.css";
+import "./assets/styles/notes.css";
+import "./assets/styles/categories.css";
+
 const MainController = require("./controllers/main-controller.js");
 
 const menuButton = document.querySelector(".menuButton");

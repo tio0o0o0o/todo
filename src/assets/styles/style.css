@@ -17,12 +17,14 @@ a {
 
 :root {
     --black: rgb(36, 36, 36);
+    --darkWhite: rgb(202, 202, 202);
     --lightBlack: rgb(58, 58, 58);
     --lighten: rgba(255, 255, 255, 0.1);
     --extraLighten: rgba(255, 255, 255, 0.3);
     --green: rgb(0, 201, 141);
-    --darkGreen: rgb(0, 192, 134);
+    --darkGreen: rgb(0, 168, 118);
     --darken: rgba(0, 0, 0, 0.8);
+    --grey: rgb(102, 102, 102);
 }
 
 @font-face {
@@ -61,6 +63,8 @@ header {
         box-sizing: content-box;
         padding: 10px;
         border-radius: 100px;
+        transition-duration: 200ms;
+        transition-property: background-color;
     }
 
     & input[type="image"]:hover {
@@ -111,6 +115,8 @@ nav {
         gap: 20px;
         border-radius: 100px;
         cursor: pointer;
+        transition-duration: 200ms;
+        transition-property: background-color;
     }
 
     & div:not(.add):hover[data-selected = false] {
@@ -185,6 +191,12 @@ main {
         border-radius: 100px;
         font-size: 16px;
         padding: 10px 30px;
+        transition: 200ms background-color;
+        cursor: pointer;
+    }
+
+    & button:hover {
+        background-color: var(--darkWhite);
     }
 
     & input {
@@ -238,6 +250,7 @@ main {
         color: white;
         font-size: 16px;
         padding: 0 10px;
+        cursor: pointer;
     }
 
     #dateSelect {
@@ -283,6 +296,12 @@ main {
         border-radius: 100px;
         font-size: 16px;
         padding: 10px 30px;
+        transition: 200ms background-color;
+        cursor: pointer;
+    }
+
+    & button:hover {
+        background-color: var(--darkWhite);
     }
 
     & input {
@@ -336,6 +355,7 @@ main {
         color: white;
         font-size: 16px;
         padding: 0 10px;
+        cursor: pointer;
     }
 
     #editDateSelect {
@@ -347,3 +367,4 @@ main {
         color: white;
     }
 }
+
