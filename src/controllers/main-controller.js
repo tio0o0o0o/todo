@@ -50,3 +50,5 @@ function assignSelected(linkToSelect) {
     });
     linkToSelect.dataset.selected = true;
 }
+
+tasksController.initializeView();

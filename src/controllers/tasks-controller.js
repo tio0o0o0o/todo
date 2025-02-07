@@ -1,7 +1,7 @@
 import TasksModel from "../models/tasks.model.js";
 import TasksView from "../views/tasks-view.js";
 import Utility from "../utility/utility.js";
-const { isThisWeek, isToday } = require("date-fns");
+const { isThisWeek, isToday, format } = require("date-fns");
 
 export default class TasksController {
     #tasksView = new TasksView();
@@ -35,10 +35,14 @@ export default class TasksController {
         this.#tasksView.delete();
         this.#tasksView.create(this.filteredTasks);
         this.#assignDelete();
-        // this.#assignCreate();
         this.#assignCreateModal();
         this.#assignUpdate();
         this.#assignToggleComplete();
+    }
+
+    initializeView() {
+        this.#assignCancel();
+        this.#assignCreate();
     }
 
     createPlaceholder(count = 1) {
@@ -63,26 +67,58 @@ export default class TasksController {
     }
 
     #assignCreate() {
+        console.log("Assign create");
         Utility.assignFunction({
-            elements: [document.querySelector(".createTaskButton")],
+            elements: [document.querySelector("#addNewTaskButton")],
             functionToAssign: () => {
-                const date = prompt("Input date: (yyyy-mm-dd)");
+                const modal = document.querySelector(".createTaskModal");
+                const titleInput = modal.querySelector("#createTitleInput");
+                const descriptionInput = modal.querySelector("#createDescriptionInput");
+                const dateSelect = modal.querySelector("#dateSelect");
                 TasksModel.create({
-                    title: `New task`,
-                    description: "Task description",
-                    dueDate: new Date(date),
+                    title: titleInput.value,
+                    description: descriptionInput.value,
+                    dueDate: new Date(dateSelect.value),
                     priority: "mid"
                 });
+                titleInput.value = "";
+                descriptionInput.value = "";
+                dateSelect.value = format(new Date(), 'yyyy-MM-dd');
+                modal.close();
                 this.updateView();
             }
         });
     }  
 
+    #assignCancel() {
+        Utility.assignFunction({
+            elements: [document.querySelector("#cancelNewTaskButton")],
+            functionToAssign: () => {
+                const modal = document.querySelector(".createTaskModal");
+                modal.close();
+            }
+        });
+    }
+
     #assignCreateModal() {
         Utility.assignFunction({
             elements: [document.querySelector(".createTaskButton")],
             functionToAssign: () => {
-                document.querySelector(".createTaskModal").showModal();
+                const modal = document.querySelector(".createTaskModal");
+                const dateSelect = modal.querySelector("#dateSelect");
+                const today = format(new Date(), 'yyyy-MM-dd');
+                dateSelect.defaultValue = today;
+                const categorySelect = modal.querySelector("#categorySelect");
+                const categoryList = ["gym", "study", "business"];
+                categoryList.forEach((category) => {
+                    Utility.createElement({
+                        tag: "option",
+                        attributes: ["value", category],
+                        textContent: Utility.capitalize(category),
+                        parent: categorySelect
+                    });
+                });
+                modal.showModal();
             }
         });
     }

@@ -49,6 +49,12 @@ class Utility {
             });
         });
     }
+
+    static capitalize(string) {
+        const firstLetter = string[0].toUpperCase();
+        const otherLetters = string.slice(1, string.length).toLowerCase();
+        return firstLetter + otherLetters;
+    }
 }
 
 module.exports = Utility;
