@@ -15,6 +15,12 @@ export default class TasksModel {
         return this.tasks;
     }
 
+    static find(id) {
+        return this.tasks.find((task) => {
+            return task.id === id;
+        });
+    }
+
     static update(id, { title = "", description, dueDate = "", priority = "", category, complete = "" } = {}) {
         const task = this.tasks.find((task) => task.id === id);
         if (!task) throw new Error(`ID of ${id} was not found`);

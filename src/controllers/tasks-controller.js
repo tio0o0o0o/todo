@@ -35,9 +35,9 @@ export default class TasksController {
         this.#tasksView.delete();
         this.#tasksView.create(this.filteredTasks);
         this.#assignDelete();
-        this.#assignUpdate();
         this.#assignShowModal();
         this.#assignToggleComplete();
+        this.#assignOpenEditModal();
     }
 
     initializeView() {
@@ -52,7 +52,7 @@ export default class TasksController {
                 title: `Placeholder task ${i + 1}`,
                 description: "Task description",
                 dueDate: new Date(),
-                priority: "mid",
+                priority: "medium"
             });
         }
     }
@@ -78,7 +78,7 @@ export default class TasksController {
                 const dateSelect = modal.querySelector("#dateSelect");
                 const categorySelect = modal.querySelector("#categorySelect");
                 const prioritySelect = modal.querySelector("#prioritySelect");
-                
+
                 TasksModel.create({
                     title: titleInput.value,
                     description: descriptionInput.value,
@@ -143,18 +143,6 @@ export default class TasksController {
             });
         });
     }
-    
-    #assignUpdate() {
-        Utility.assignFunction({
-            elements: document.querySelectorAll(".taskEditButton"),
-            functionToAssign: (element) => {
-                TasksModel.update(element.parentNode.parentNode.dataset.id, {
-                    title: `Updated task name`,
-                });
-                this.updateView();
-            }
-        });
-    }   
 
     #assignToggleComplete() {
         Utility.assignFunction({
@@ -165,6 +153,33 @@ export default class TasksController {
                     complete: element.checked
                 });
                 this.updateView();
+            }
+        });
+    }
+
+    #assignOpenEditModal() {
+        Utility.assignFunction({
+            elements: document.querySelectorAll(".taskEditButton"),
+            functionToAssign: (element) => {
+                const editTaskModal = document.querySelector(".editTaskModal");
+                const parentElementId = element.parentNode.parentNode.dataset.id;
+                const taskData = TasksModel.find(parentElementId);
+                editTaskModal.querySelector("#editTitleInput").value = taskData.title;
+                editTaskModal.querySelector("#editDescriptionInput").value = taskData.description;
+                editTaskModal.querySelector("#editPrioritySelect").value = taskData.priority;
+                const editCategorySelect = editTaskModal.querySelector("#editCategorySelect");
+                const categoryList = ["gym", "study", "business"];
+                categoryList.forEach((category) => {
+                    Utility.createElement({
+                        tag: "option",
+                        attributes: ["value", category],
+                        textContent: Utility.capitalize(category),
+                        parent: editCategorySelect
+                    });
+                });
+                if (taskData.category !== "") editCategorySelect.value = taskData.category;
+                editTaskModal.querySelector("#editDateSelect").value = format(taskData.dueDate, 'yyyy-MM-dd')
+                editTaskModal.showModal();
             }
         });
     }

@@ -66,5 +66,30 @@
             <button id="addNewTaskButton">Add</button>
         </div>
     </dialog>
+    <dialog class="editTaskModal">
+        <h1>Edit task</h1>
+        <input type="text" id="editTitleInput" placeholder="Title">
+        <textarea id="editDescriptionInput" placeholder="Description"></textarea>
+        <div class="configLabels">
+            <label for="prioritySelect">Priority</label>
+            <label for="categorySelect">Category</label>
+            <label for="dateSelect">Due date</label>
+        </div>
+        <div class="config">
+            <select id="editPrioritySelect" aria-label="Priority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+            </select>
+            <select id="editCategorySelect" aria-label="Category">
+                <option value="default">Default</option>
+            </select>
+            <input type="date" id="editDateSelect">
+        </div>
+        <div class="buttons">
+            <button id="cancelEditButton">Cancel</button>
+            <button id="confirmEditButton">Confirm</button>
+        </div>
+    </dialog>
 </body>
 </html>
