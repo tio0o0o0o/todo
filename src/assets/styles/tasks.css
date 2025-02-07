@@ -1,10 +1,9 @@
 .isComplete {
     position: relative;
-    width: 22px;
-    height: 22px;
+    width: 35px;
+    height: 35px;
     cursor: pointer;
 }
-
 
 .isComplete::after {
     content: "";
@@ -40,7 +39,7 @@
 .newTask {
     background-color: var(--lighten);
     border-radius: 14px;
-    padding: 20px;
+    padding: 30px;
     position: relative;
     display: flex;
     align-items: center;
@@ -59,11 +58,20 @@
     gap: 20px;
 }
 
+.taskTitle {
+    font-size: 30px;
+}
+
+.taskDueDate {
+    font-size: 30px;
+}
+
 .taskEditButton, .taskDeleteButton {
     padding: 5px;
     border-radius: 100px;
     transition-duration: 200ms;
     transition-property: background-color;
+    width: 50px;
 
     &:hover {
         background-color: var(--lighten);
@@ -91,6 +99,10 @@
     display: flex;
     margin-bottom: 20px;
     border-bottom: 2px solid var(--lighten);
+    background-color: var(--black);
+    position: sticky;
+    top: 70px;
+    z-index: 3;
 }
 
 .filter {
