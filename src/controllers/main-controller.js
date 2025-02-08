@@ -7,9 +7,6 @@ const notesController = new NotesController();
 const categoriesController = new CategoriesController();
 const tasksController = new TasksController();
 
-notesController.createPlaceholder(3);
-tasksController.createPlaceholder(3);
-
 const notesLink = document.querySelector(".notesLink");
 const categoriesLink = document.querySelector(".categoriesLink");
 const allLink = document.querySelector(".allLink");

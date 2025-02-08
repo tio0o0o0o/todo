@@ -47,10 +47,18 @@ export default class CategoriesController {
                 const tasksWithCategory = TasksModel.read().filter((task) => task.category === element.parentNode.dataset.name);
                 tasksWithCategory.forEach((task) => {
                     task.category = "default";
+
+                    // Save data
+                    this.saveDataProxy();
                 });
                 CategoriesModel.delete(element.parentNode.dataset.name);
                 this.updateView();
             }
         });
+    }
+
+    saveDataProxy() {
+        const tasksString = JSON.stringify(TasksModel.read());
+        localStorage.setItem("tasks", tasksString);
     }
 }
