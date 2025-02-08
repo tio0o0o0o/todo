@@ -65,11 +65,32 @@ export default class TasksModel {
     static createDefault() {
         return [
             new Task(
-                "Rizz up a gyatt",
-                "Rizz Livvy Dunne's gyatt",
+                "Run duos in Fortnite with Livvy Dunne",
+                "Baby gronk has negative aura fr fr",
+                new Date("2025-03-16"),
+                "high",
+                "rizzing"
+            ),
+            new Task(
+                "Reach level 10 gyatt",
+                "My gyatt is at level 7 rn",
+                new Date("2025-02-10"),
+                "high",
+                "looksmaxxing"
+            ),
+            new Task(
+                "3 hour edging sesh",
+                "",
                 new Date(),
                 "high",
-                "default"
+                "edging"
+            ),
+            new Task(
+                "Chat about skibidi toilet with my Roblox girlfriend",
+                "",
+                new Date("2025-02-07"),
+                "high",
+                "rizzing"
             )
         ];
     }

@@ -55,7 +55,8 @@ export default class NotesModel {
 
     static createDefault() {
         return [
-            new Note("Looksmaxxing tips", "1. Mewing \n2. Edgemaxiing")
+            new Note("How to creating aura", "1. Mewing \n2. Edgemaxing \n3. Avoid gooning"),
+            new Note("Gyatt tier list", "S Tier \n• Sophie Rain \n• Livvy Dunne \n\nF Tier \n• Ice Spice")
         ];
     }
 
@@ -64,5 +65,6 @@ export default class NotesModel {
         localStorage.setItem("notes", notesString);
     }
 }
+
 
 

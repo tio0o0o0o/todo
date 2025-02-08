@@ -60,9 +60,9 @@ export default class CategoriesModel {
 
     static createDefault() {
         return [
-            "looksmaxxing",
             "rizzing",
-            "fanum taxxing"
+            "looksmaxxing",
+            "edging"
         ];
     }
 
