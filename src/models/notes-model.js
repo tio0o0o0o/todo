@@ -46,7 +46,7 @@ export default class NotesModel {
             const notesParsed = JSON.parse(localStorage.getItem("notes"));
             if (notesParsed) {
                 return notesParsed;
-            }
+            } 
             else {
                 return this.createDefault();
             }
